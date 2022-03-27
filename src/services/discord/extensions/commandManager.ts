@@ -1,7 +1,7 @@
-// Local Imports
-import { BaseCommand } from '../classes/BaseCommand';
+// Local Typings Imports
+import type { BaseCommand } from '../classes/BaseCommand';
 
-// External Imports2.,
+// External Imports
 import { readdirSync } from 'fs';
 
 export class CommandManager {

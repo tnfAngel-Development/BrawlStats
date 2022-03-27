@@ -1,9 +1,11 @@
 // Local Imports
-import { BrawlStatsClient } from '../../../client';
 import { CommandContext } from '../classes/CommandContext';
 
-// External Imports
-import { Message, PermissionResolvable } from 'discord.js';
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../../client';
+
+// External Typings Imports
+import type { Message, PermissionResolvable } from 'discord.js';
 
 module.exports = async (
 	client: BrawlStatsClient,

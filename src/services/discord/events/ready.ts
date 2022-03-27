@@ -1,5 +1,5 @@
-// Local Imports
-import { BrawlStatsClient } from '../../../client';
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../../client';
 
 module.exports = async (client: BrawlStatsClient): Promise<void> => {
 	client.discord.user.setActivity({

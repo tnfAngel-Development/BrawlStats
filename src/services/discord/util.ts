@@ -1,8 +1,8 @@
-// Local Imports
-import { BrawlStatsClient } from '../../client';
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../client';
 
-// External Imports
-import { GuildMember, GuildResolvable, Snowflake, User } from 'discord.js';
+// External Typings Imports
+import type { GuildMember, GuildResolvable, Snowflake, User } from 'discord.js';
 
 export class DiscordClientUtil {
 	toCodeBlock: (code: string, text: string) => string;

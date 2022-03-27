@@ -1,20 +1,19 @@
 export {};
 
 // External Imports
-import {
-	Client,
-	ClientOptions,
-	Intents,
-	MessageEmbed,
-	MessageAttachment,
-} from 'discord.js';
+import { Client, Intents, MessageEmbed, MessageAttachment } from 'discord.js';
 import { readdirSync } from 'fs';
 
+// External Typings Imports
+import type { ClientOptions } from 'discord.js';
+
 // Local Imports
-import { BrawlStatsClient } from '../../client';
 import { DiscordClientConfig } from './config';
 import { CommandManager } from './extensions/commandManager';
 import { DiscordClientUtil } from './util';
+
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../client';
 
 // Client
 export class DiscordClient extends Client {

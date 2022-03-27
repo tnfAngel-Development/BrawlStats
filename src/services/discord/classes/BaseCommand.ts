@@ -1,8 +1,8 @@
-// Local Imports
-import { CommandContext } from './CommandContext';
+// Local Typings Imports
+import type { CommandContext } from './CommandContext';
 
-// External Imports
-import { PermissionResolvable } from 'discord.js';
+// External Typings Imports
+import type { PermissionResolvable } from 'discord.js';
 
 interface ICommandData {
 	name: string;

@@ -1,5 +1,5 @@
-// Local Imports
-import { BrawlStatsClient } from '../../client';
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../client';
 
 const discordBotID = process.env.DISCORD_ID;
 

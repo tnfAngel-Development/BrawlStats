@@ -1,10 +1,13 @@
 export {};
 
-// Local imports
+// Local Imports
 import { BrawlStatsClientConfig } from './config';
-import { BrawlStatsClientLogger, BrawlStatsClientLoggerColors } from './logger';
-import { DiscordClient } from './services/discord/client';
+import { BrawlStatsClientLogger } from './logger';
 import { BrawlStatsClientUtil } from './util';
+
+// Local Typings Imports
+import type { DiscordClient } from './services/discord/client';
+import type { BrawlStatsClientLoggerColors } from './logger';
 
 // Client
 export class BrawlStatsClient {

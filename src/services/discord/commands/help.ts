@@ -1,6 +1,8 @@
 // Local Imports
 import { BaseCommand } from '../classes/BaseCommand';
-import { CommandContext } from '../classes/CommandContext';
+
+// Local Typings Imports
+import type { CommandContext } from '../classes/CommandContext';
 
 // External Imports
 import { getBorderCharacters, table } from 'table';

@@ -1,5 +1,8 @@
-import { BrawlStatsClient } from '../../../client';
-import { Message } from 'discord.js';
+// Local Typings Imports
+import type { BrawlStatsClient } from '../../../client';
+
+// External Typings Imports
+import type { Message } from 'discord.js';
 
 interface ICommandContext {
 	client: BrawlStatsClient;
