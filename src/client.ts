@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 export {};
 
 // Local Imports
@@ -37,6 +38,7 @@ export class BrawlStatsClient {
 		chunk: (targetArray: any[], chunkSize: number) => any[];
 		seedShuffle: (targetArray: any[], seed?: number) => any[];
 	};
+	// @ts-ignore
 	discord: DiscordClient;
 	constructor() {
 		// Logger
@@ -51,6 +53,7 @@ export class BrawlStatsClient {
 
 		// Services
 		for (const service of this.config.services) {
+			// @ts-ignore
 			this[service] = require(`./services/${service}/client`)(this);
 		}
 
@@ -121,6 +124,7 @@ export class BrawlStatsClient {
 				.join(', ')} ]...`
 		);
 		for (const service of services) {
+			// @ts-ignore
 			await this[service].start();
 		}
 	}

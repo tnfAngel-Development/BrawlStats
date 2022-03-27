@@ -7,7 +7,7 @@ import { readdirSync } from 'fs';
 export class CommandManager {
 	getCommands(): BaseCommand[] {
 		const path = '../commands/';
-		const commands = [];
+		const commands: BaseCommand[] = [];
 
 		function addCommand(commandPath: string) {
 			const command = require(commandPath);

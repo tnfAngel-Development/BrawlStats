@@ -1,7 +1,7 @@
 // Local Typings Imports
 import type { BrawlStatsClient } from '../../client';
 
-const discordBotID = process.env.DISCORD_ID;
+const discordBotID = process.env.DISCORD_ID as string;
 
 export class DiscordClientConfig {
 	bot: { readonly token: string; prefix: string; id: string };
@@ -11,7 +11,7 @@ export class DiscordClientConfig {
 	constructor(client: BrawlStatsClient) {
 		this.bot = {
 			get token() {
-				return process.env.DISCORD_TOKEN;
+				return process.env.DISCORD_TOKEN as string;
 			},
 			prefix: '!',
 			id: discordBotID,

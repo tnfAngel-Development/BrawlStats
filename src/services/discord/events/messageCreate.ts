@@ -5,7 +5,7 @@ import { CommandContext } from '../classes/CommandContext';
 import type { BrawlStatsClient } from '../../../client';
 
 // External Typings Imports
-import type { Message, PermissionResolvable } from 'discord.js';
+import type { GuildChannel, Message, PermissionResolvable } from 'discord.js';
 
 module.exports = async (
 	client: BrawlStatsClient,
@@ -13,13 +13,13 @@ module.exports = async (
 ): Promise<any> => {
 	if (message.channel.type === 'DM') return;
 
-	const channel = message.channel;
+	const channel = message.channel as GuildChannel;
 
 	const prefixes = [
 		client.discord.config.bot.prefix,
 		'BrawlStats ',
-		`<@${client.discord.user.id}> `,
-		`<@!${client.discord.user.id}> `,
+		`<@${client.discord.config.bot.id}> `,
+		`<@!${client.discord.config.bot.id}> `,
 	];
 
 	let prefix: string | null = null;
@@ -31,15 +31,15 @@ module.exports = async (
 
 	if (
 		[
-			`<@${client.discord.user.id}>`,
-			`<@!${client.discord.user.id}>`,
+			`<@${client.discord.config.bot.id}>`,
+			`<@!${client.discord.config.bot.id}>`,
 		].includes(message.content)
 	) {
 		return message.reply({
-			content: `:information_source: Mi prefijo en este servidor es ${client.discord.util.toCode(
-				prefix
+			content: `:information_source: Mi prefijo en es ${client.discord.util.toCode(
+				client.discord.config.bot.prefix
 			)}. Usa ${client.discord.util.toCode(
-				`${prefix}help`
+				`${client.discord.config.bot.prefix}help`
 			)} para ver los comandos del bot.`,
 		});
 	}
@@ -47,45 +47,46 @@ module.exports = async (
 	if (!prefix) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
-	const commandArg = args.shift().toLowerCase();
+	const commandArg = args[0].toLowerCase();
+	args.shift();
 
 	const command =
 		client.discord.extensions.commandManager.matchCommand(commandArg);
 
 	if (command) {
-		const missingUserPermissions = [];
-		const missingBotPermissions = [];
+		const missingUserPermissions: PermissionResolvable[] = [];
+		const missingBotPermissions: PermissionResolvable[] = [];
 
 		if (
 			!channel
 				.permissionsFor(message.author.id)
-				.has(command.permissions.user)
+				?.has(command.permissions.user)
 		) {
 			command.permissions.user.forEach(
 				(permission: PermissionResolvable): void => {
 					if (
 						!channel
 							.permissionsFor(message.author.id)
-							.has(permission)
+							?.has(permission)
 					)
-						missingUserPermissions.push(permission.toString());
+						missingUserPermissions.push(permission);
 				}
 			);
 		}
 
 		if (
 			!channel
-				.permissionsFor(client.discord.user.id)
-				.has(command.permissions.bot)
+				.permissionsFor(client.discord.config.bot.id)
+				?.has(command.permissions.bot)
 		) {
 			command.permissions.bot.forEach(
 				(permission: PermissionResolvable): void => {
 					if (
 						!channel
-							.permissionsFor(client.discord.user.id)
-							.has(permission)
+							.permissionsFor(client.discord.config.bot.id)
+							?.has(permission)
 					)
-						missingUserPermissions.push(permission.toString());
+						missingUserPermissions.push(permission);
 				}
 			);
 		}

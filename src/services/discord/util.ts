@@ -2,7 +2,13 @@
 import type { BrawlStatsClient } from '../../client';
 
 // External Typings Imports
-import type { GuildMember, GuildResolvable, Snowflake, User } from 'discord.js';
+import type {
+	Guild,
+	GuildMember,
+	GuildResolvable,
+	Snowflake,
+	User,
+} from 'discord.js';
 
 export class DiscordClientUtil {
 	toCodeBlock: (code: string, text: string) => string;
@@ -18,7 +24,9 @@ export class DiscordClientUtil {
 			guildResolvable: GuildResolvable,
 			member: string
 		): GuildMember | undefined => {
-			const guild = client.discord.guilds.resolve(guildResolvable);
+			const guild = client.discord.guilds.resolve(
+				guildResolvable
+			) as Guild;
 
 			return guild.members.cache.find(
 				(findMember: GuildMember): boolean =>
