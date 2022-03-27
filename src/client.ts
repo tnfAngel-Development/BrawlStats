@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 export {};
 
+// External Typings Imports
+import type { Client as BSClient } from 'brawlstats';
+
 // Local Imports
 import { BrawlStatsClientConfig } from './config';
 import { BrawlStatsClientLogger } from './logger';
@@ -40,6 +43,8 @@ export class BrawlStatsClient {
 	};
 	// @ts-ignore
 	discord: DiscordClient;
+	// @ts-ignore
+	bs: BSClient;
 	constructor() {
 		// Logger
 		this.loggerClient = new BrawlStatsClientLogger();

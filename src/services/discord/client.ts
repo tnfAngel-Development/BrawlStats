@@ -41,7 +41,7 @@ export class DiscordClient extends Client {
 		this.MessageAttachment = MessageAttachment;
 
 		// Config
-		this.config = new DiscordClientConfig(this.client);
+		this.config = new DiscordClientConfig();
 
 		// Util
 		this.util = new DiscordClientUtil(this.client);

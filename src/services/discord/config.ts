@@ -8,7 +8,7 @@ export class DiscordClientConfig {
 	buttonColors: { blurple: string; red: string };
 	settings: { rateLimit: boolean; debug: boolean };
 	links: { invite: string };
-	constructor(client: BrawlStatsClient) {
+	constructor() {
 		this.bot = {
 			get token() {
 				return process.env.DISCORD_TOKEN as string;

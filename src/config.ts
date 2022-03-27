@@ -17,7 +17,7 @@ export class BrawlStatsClientConfig {
 	};
 	info: { readonly fullVersion: string; version: string; channel: string };
 	constructor() {
-		this.services = ['discord'];
+		this.services = ['bs', 'discord'];
 
 		this.environment = process.env.NODE_ENV || 'development';
 

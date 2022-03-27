@@ -59,6 +59,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/collection@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@discordjs/collection@npm:0.5.0"
+  checksum: a228979bb5f955cf095ce47441c55d0196cd99ff8484b57d26a45e58506c6646d776a98a9e11b822aab4e15fb2ac1aecfdebc63cde8ab7d04d3d74b716e80144
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^1.2.1":
   version: 1.2.1
   resolution: "@eslint/eslintrc@npm:1.2.1"
@@ -226,6 +233,15 @@ __metadata:
   version: 1.1.9
   resolution: "@sapphire/async-queue@npm:1.1.9"
   checksum: 8a4cb79e01948ee9f99f47e9fdfdfd509353d267f9e18bb8fe8e813b5d45f1fb6de08297b4557eb9a76b95bea59abaab67819175238068cc4cbc808d1d183e9d
+  languageName: node
+  linkType: hard
+
+"@sapphire/fetch@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@sapphire/fetch@npm:2.3.0"
+  dependencies:
+    cross-fetch: ^3.1.5
+  checksum: b7e77606a7dc219122e69b0a9139b0bb660675c07547c436aa62a931d22a815bc04bb7f8d67d55f9cb9044753592187fa62c8034fc705385fff99b454ec3d58a
   languageName: node
   linkType: hard
 
@@ -774,6 +790,7 @@ __metadata:
     "@types/prettier": ^2.4.4
     "@typescript-eslint/eslint-plugin": ^5.16.0
     "@typescript-eslint/parser": ^5.16.0
+    brawlstats: ^2.0.0
     discord.js: ^13.6.0
     dotenv: ^16.0.0
     eslint: ^8.12.0
@@ -791,6 +808,17 @@ __metadata:
     winston: ^3.6.0
   languageName: unknown
   linkType: soft
+
+"brawlstats@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "brawlstats@npm:2.0.0"
+  dependencies:
+    "@discordjs/collection": ^0.5.0
+    "@sapphire/fetch": ^2.3.0
+    colorette: ^2.0.16
+  checksum: 2855d03a2915f6dd9d886fe9ee253a281be400ffb687afe8f503fbd6fd88a4107dfee15d349bfd1b50beb7df4b842303074ad02e3d25ba2d47176a1ca87a6a6b
+  languageName: node
+  linkType: hard
 
 "buffer-from@npm:^1.0.0":
   version: 1.1.2
@@ -1145,6 +1173,15 @@ __metadata:
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
   checksum: a9a1503d4390d8b59ad86f4607de7870b39cad43d929813599a23714831e81c520bddf61bcdd1f8e30f05fd3a2b71ae8538e946eb2786dc65c2bbc520f692eff
+  languageName: node
+  linkType: hard
+
+"cross-fetch@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "cross-fetch@npm:3.1.5"
+  dependencies:
+    node-fetch: 2.6.7
+  checksum: f6b8c6ee3ef993ace6277fd789c71b6acf1b504fd5f5c7128df4ef2f125a429e29cd62dc8c127523f04a5f2fa4771ed80e3f3d9695617f441425045f505cf3bb
   languageName: node
   linkType: hard
 
@@ -2852,7 +2889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.1":
+"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.1":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
