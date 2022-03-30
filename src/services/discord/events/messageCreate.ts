@@ -141,7 +141,10 @@ module.exports = async (
 			console.error(error);
 			await message.reply({
 				content: `:warning: Ocurrió un error al ejecutar el comando.
-				${client.discord.util.toCodeBlock('ts', error.toString())}`,
+				${client.discord.util.toCodeBlock(
+					'ts',
+					error.stack ?? `${error.name}: ${error.message}`
+				)}`,
 			});
 		});
 	}
