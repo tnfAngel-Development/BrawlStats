@@ -137,6 +137,12 @@ module.exports = async (
 			args: args,
 		});
 
-		await command.run(ctx);
+		await command.run(ctx).catch(async (error: Error): Promise<void> => {
+			console.error(error);
+			await message.reply({
+				content: `:warning: Ocurrió un error al ejecutar el comando.
+				${client.discord.util.toCodeBlock('ts', error.toString())}`,
+			});
+		});
 	}
 };

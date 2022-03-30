@@ -1,13 +1,19 @@
 // Local Imports
-import { Brawler } from 'brawlstats';
 import { BaseCommand } from '../classes/BaseCommand';
 
 // Local Typings Imports
 import type { CommandContext } from '../classes/CommandContext';
 
 module.exports = new BaseCommand({
-	name: 'profile',
-	alias: ['estadísticas', 'estadisticas', 'perfil', 'stats'],
+	name: 'player',
+	alias: [
+		'estadísticas',
+		'estadisticas',
+		'perfil',
+		'stats',
+		'user',
+		'jugador',
+	],
 	description: 'Mira las estadísticas del perfil de un usuario.',
 	permissions: {
 		user: [],
@@ -17,7 +23,7 @@ module.exports = new BaseCommand({
 		const { client, message, args } = ctx;
 
 		const noPlayerEmbed = new client.discord.MessageEmbed()
-			.setDescription('Debes introducir el tag de un jugador.')
+			.setDescription(':warning: Debes introducir el tag de un jugador.')
 			.setColor(client.intColors.error);
 
 		if (!args[0]) return message.channel.send({ embeds: [noPlayerEmbed] });
@@ -25,7 +31,7 @@ module.exports = new BaseCommand({
 		const playerTag = `#${args[0].replace('#', '')}`;
 
 		const loadEmbed = new client.discord.MessageEmbed()
-			.setDescription('Obteniendo información...')
+			.setDescription(':stopwatch: Obteniendo información...')
 			.setColor(client.intColors.blurple);
 
 		const msg = await message.channel.send({ embeds: [loadEmbed] });
@@ -33,7 +39,9 @@ module.exports = new BaseCommand({
 		const player = await client.bs.getPlayer(playerTag).catch(() => null);
 
 		const invalidPlayerEmbed = new client.discord.MessageEmbed()
-			.setDescription('El tag de jugador introducido es invalido.')
+			.setDescription(
+				':warning: El tag del jugador introducido es invalido.'
+			)
 			.setColor(client.intColors.error);
 
 		if (!player)
@@ -48,7 +56,7 @@ module.exports = new BaseCommand({
 
 		const noBrawlersEmbed = new client.discord.MessageEmbed()
 			.setDescription(
-				'Error interno al obtener los brawlers del juego, intentalo de nuevo mas tarde.'
+				':warning: Error interno al obtener los brawlers del juego, intentalo de nuevo mas tarde.'
 			)
 			.setColor(client.intColors.error);
 
