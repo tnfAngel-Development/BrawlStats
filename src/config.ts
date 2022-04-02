@@ -41,7 +41,7 @@ export class BrawlStatsClientConfig {
 			get fullVersion() {
 				return `${this.version}-${this.channel}`;
 			},
-			version: 'v1',
+			version: require('../package.json').version,
 			channel: 'canary',
 		};
 	}

@@ -111,7 +111,7 @@ module.exports = async (
 				missingBotPermissions.length > 0
 			)
 				return message.reply({
-					content: `Permisos requeridos para el usuario: ${parsedMissingUserPermissions}\nPermisos requeridos para el bot: ${parsedMissingBotPermissions}.`,
+					content: `:warning: Permisos requeridos para el usuario: ${parsedMissingUserPermissions}\n:warning: Permisos requeridos para el bot: ${parsedMissingBotPermissions}.`,
 				});
 
 			if (
@@ -119,7 +119,7 @@ module.exports = async (
 				missingBotPermissions.length === 0
 			)
 				return message.reply({
-					content: `Permisos requeridos para el usuario: ${parsedMissingUserPermissions}.`,
+					content: `:warning: Permisos requeridos para el usuario: ${parsedMissingUserPermissions}.`,
 				});
 
 			if (
@@ -127,7 +127,7 @@ module.exports = async (
 				missingBotPermissions.length > 0
 			)
 				return message.reply({
-					content: `Permisos requeridos para el bot: ${parsedMissingBotPermissions}.`,
+					content: `:warning: Permisos requeridos para el bot: ${parsedMissingBotPermissions}.`,
 				});
 		}
 
@@ -138,6 +138,7 @@ module.exports = async (
 		});
 
 		await command.run(ctx).catch(async (error: Error): Promise<void> => {
+			console.log('BrawlStatsErrorHandler:');
 			console.error(error);
 			await message.reply({
 				content: `:warning: Ocurrió un error al ejecutar el comando.

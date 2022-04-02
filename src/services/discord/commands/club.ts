@@ -15,31 +15,22 @@ module.exports = new BaseCommand({
 	run: async (ctx: CommandContext): Promise<any> => {
 		const { client, message, args } = ctx;
 
-		const noClubEmbed = new client.discord.MessageEmbed()
-			.setDescription(':warning: Debes introducir el tag del grupo')
-			.setColor(client.intColors.error);
-
-		if (!args[0]) return message.channel.send({ embeds: [noClubEmbed] });
+		if (!args[0])
+			return message.reply({
+				content: ':warning: Debes introducir el tag del grupo.',
+			});
 
 		const clubTag = `#${args[0].replace('#', '')}`;
 
-		const loadEmbed = new client.discord.MessageEmbed()
-			.setDescription(':stopwatch: Obteniendo información...')
-			.setColor(client.intColors.blurple);
-
-		const msg = await message.channel.send({ embeds: [loadEmbed] });
+		const msg = await message.reply({
+			content: ':stopwatch: Obteniendo información...',
+		});
 
 		const club = await client.bs.getClub(clubTag).catch(() => null);
 
-		const invalidClubEmbed = new client.discord.MessageEmbed()
-			.setDescription(
-				':warning: El tag del club introducido es invalido.'
-			)
-			.setColor(client.intColors.error);
-
 		if (!club)
 			return msg.edit({
-				embeds: [invalidClubEmbed],
+				content: ':warning: El tag del club introducido es invalido.',
 			});
 
 		const clubIcon = `https://brawlace.com/assets/images/icons-clubs/${club.badgeId}.png`;
@@ -62,11 +53,11 @@ module.exports = new BaseCommand({
 				true
 			)
 			.addField(
-				'<:showdown:957733558888329276>  Tipo',
+				'<:showdown:957733558888329276> Tipo',
 				club.type === 'open' ? 'Abierto' : 'Cerrado',
 				true
 			);
 
-		await msg.edit({ embeds: [clubEmbed] });
+		await msg.edit({ content: null, embeds: [clubEmbed] });
 	},
 });

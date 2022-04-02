@@ -9,7 +9,7 @@ import { getBorderCharacters, table } from 'table';
 
 module.exports = new BaseCommand({
 	name: 'help',
-	alias: ['ayuda', 'comandos'],
+	alias: ['ayuda', 'comandos', 'commands'],
 	description: 'Muestra todos los comandos del bot',
 	permissions: {
 		user: [],

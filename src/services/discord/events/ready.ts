@@ -8,7 +8,7 @@ module.exports = async (client: BrawlStatsClient): Promise<void> => {
 	const clientUser = client.discord.user as ClientUser;
 
 	clientUser.setActivity({
-		name: `${client.discord.config.bot.prefix}help | Developed by tnfAngel`,
+		name: `${client.discord.config.bot.prefix}help | by tnfAngel`,
 		type: 'WATCHING',
 	});
 

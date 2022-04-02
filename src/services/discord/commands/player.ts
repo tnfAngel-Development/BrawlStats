@@ -22,31 +22,23 @@ module.exports = new BaseCommand({
 	run: async (ctx: CommandContext): Promise<any> => {
 		const { client, message, args } = ctx;
 
-		const noPlayerEmbed = new client.discord.MessageEmbed()
-			.setDescription(':warning: Debes introducir el tag de un jugador.')
-			.setColor(client.intColors.error);
-
-		if (!args[0]) return message.channel.send({ embeds: [noPlayerEmbed] });
+		if (!args[0])
+			return message.reply({
+				content: ':warning: Debes introducir el tag de un jugador.',
+			});
 
 		const playerTag = `#${args[0].replace('#', '')}`;
 
-		const loadEmbed = new client.discord.MessageEmbed()
-			.setDescription(':stopwatch: Obteniendo información...')
-			.setColor(client.intColors.blurple);
-
-		const msg = await message.channel.send({ embeds: [loadEmbed] });
+		const msg = await message.reply({
+			content: ':stopwatch: Obteniendo información...',
+		});
 
 		const player = await client.bs.getPlayer(playerTag).catch(() => null);
 
-		const invalidPlayerEmbed = new client.discord.MessageEmbed()
-			.setDescription(
-				':warning: El tag del jugador introducido es invalido.'
-			)
-			.setColor(client.intColors.error);
-
 		if (!player)
 			return msg.edit({
-				embeds: [invalidPlayerEmbed],
+				content:
+					':warning: El tag del jugador introducido es invalido.',
 			});
 
 		const brawlers = await client.bs
@@ -54,15 +46,10 @@ module.exports = new BaseCommand({
 			.then((brawlersMap) => [...brawlersMap.values()])
 			.catch(() => null);
 
-		const noBrawlersEmbed = new client.discord.MessageEmbed()
-			.setDescription(
-				':warning: Error interno al obtener los brawlers del juego, intentalo de nuevo mas tarde.'
-			)
-			.setColor(client.intColors.error);
-
 		if (!brawlers)
 			return msg.edit({
-				embeds: [noBrawlersEmbed],
+				content:
+					':warning: Error interno al obtener los brawlers del juego, intentalo de nuevo mas tarde.',
 			});
 
 		const playerIcon = `https://brawlace.com/assets/images/icons-players/${player.icon.id}.png`;
@@ -137,6 +124,6 @@ module.exports = new BaseCommand({
 				true
 			);
 
-		await msg.edit({ embeds: [profileEmbed] });
+		await msg.edit({ content: null, embeds: [profileEmbed] });
 	},
 });
