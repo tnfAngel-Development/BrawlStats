@@ -108,8 +108,8 @@ export class DiscordClient extends Client {
 		this.log.info(
 			`Starting ${this.client.logColors.cyan('Discord Client')}...`
 		);
-		await this.login(this.config.bot.token);
 		await this.loadHandlers('./events/');
+		await this.login(this.config.bot.token);
 	}
 }
 
